@@ -1,0 +1,26 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Home{% endblock %}
+
+	{% block content %}
+<p>Quick and dirty database of all namespaces used by Minetest games. <a href="/?raw-json">Also available as JSON.</a></p>
+
+<table class="namespaces">
+	<tr>
+		<th>Namespace</th>
+		<th>Game</th>
+		<th>ContentDB</th>
+		<th>Repository</th>
+		<th>Website</th>
+	</tr>
+	{% for namespace in namespaces %}
+	<tr>
+		<td class="a">{{ namespace.namespace }}</td>
+		<td class="b">{{ namespace.game }}</td>
+		<td class="c">{% if namespace.link_cdb %}<a href="{{ namespace.link_cdb }}">Link</a>{% else %}N/A{% endif %}</td>
+		<td class="d">{% if namespace.link_repo %}<a href="{{ namespace.link_repo }}">Link</a>{% else %}N/A{% endif %}</td>
+		<td class="e">{% if namespace.link_website %}<a href="{{ namespace.link_website }}">Link</a>{% else %}N/A{% endif %}</td>
+	</tr>
+	{% endfor %}
+</table>
+	{% endblock %}
